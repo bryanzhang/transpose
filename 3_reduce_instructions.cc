@@ -78,21 +78,21 @@ void transpose() {
       __m256i yvec7 = _mm256_load_si256((__m256i*)(matrix + ((i + 7) << digits) + j));
 
       // store & prefetch ((j + 8), i)
-      _mm256_store_si256((__m256i*)(matrix + (j << digits) + i), y0);
+      _mm256_store_si256((__m256i*)(matrix + (i << digits) + j), y0);
       __builtin_prefetch(matrix + ((j + 8) << digits) + i, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((j + 1) << digits) + i), y1);
+      _mm256_store_si256((__m256i*)(matrix + ((i + 1) << digits) + j), y1);
       __builtin_prefetch(matrix + ((j + 9) << digits) + i, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((j + 2) << digits) + i), y2);
+      _mm256_store_si256((__m256i*)(matrix + ((i + 2) << digits) + j), y2);
       __builtin_prefetch(matrix + ((j + 10) << digits) + i, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((j + 3) << digits) + i), y3);
+      _mm256_store_si256((__m256i*)(matrix + ((i + 3) << digits) + j), y3);
       __builtin_prefetch(matrix + ((j + 11) << digits) + i, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((j + 4) << digits) + i), y4);
+      _mm256_store_si256((__m256i*)(matrix + ((i + 4) << digits) + j), y4);
       __builtin_prefetch(matrix + ((j + 12) << digits) + i, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((j + 5) << digits) + i), y5);;
+      _mm256_store_si256((__m256i*)(matrix + ((i + 5) << digits) + j), y5);;
       __builtin_prefetch(matrix + ((j + 13) << digits) + i, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((j + 6) << digits) + i), y6);
+      _mm256_store_si256((__m256i*)(matrix + ((i + 6) << digits) + j), y6);
       __builtin_prefetch(matrix + ((j + 14) << digits) + i, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((j + 7) << digits) + i), y7);
+      _mm256_store_si256((__m256i*)(matrix + ((i + 7) << digits) + j), y7);
       __builtin_prefetch(matrix + ((j + 15) << digits) + i, 0, 3);
 
       __m256i tt0 = _mm256_unpacklo_epi32(yvec0, yvec4);
@@ -132,21 +132,21 @@ void transpose() {
       __m256i yy7 = _mm256_permute2x128_si256(xx6, xx7, 0x31);
 
       // store && prefetch (i, (j + 8))
-      _mm256_store_si256((__m256i*)(matrix + (i << digits)+ j), yy0);
+      _mm256_store_si256((__m256i*)(matrix + (j << digits) + i), yy0);
       __builtin_prefetch(matrix + (i << digits) + j + 8, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((i + 1) << digits) + j), yy1);
+      _mm256_store_si256((__m256i*)(matrix + ((j + 1) << digits) + i), yy1);
       __builtin_prefetch(matrix + ((i + 1) << digits) + j + 8, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((i + 2) << digits) + j), yy2);
+      _mm256_store_si256((__m256i*)(matrix + ((j + 2) << digits) + i), yy2);
       __builtin_prefetch(matrix + ((i + 2) << digits) + j + 8, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((i + 3) << digits) + j), yy3);
+      _mm256_store_si256((__m256i*)(matrix + ((j + 3) << digits) + i), yy3);
       __builtin_prefetch(matrix + ((i + 3) << digits) + j + 8, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((i + 4) << digits) + j), yy4);
+      _mm256_store_si256((__m256i*)(matrix + ((j + 4) << digits) + i), yy4);
       __builtin_prefetch(matrix + ((i + 4) << digits) + j + 8, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((i + 5) << digits) + j), yy5);
+      _mm256_store_si256((__m256i*)(matrix + ((j + 5) << digits) + i), yy5);
       __builtin_prefetch(matrix + ((i + 5) << digits) + j + 8, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((i + 6) << digits) + j), yy6);
+      _mm256_store_si256((__m256i*)(matrix + ((j + 6) << digits) + i), yy6);
       __builtin_prefetch(matrix + ((i + 6) << digits) + j + 8, 0, 3);
-      _mm256_store_si256((__m256i*)(matrix + ((i + 7) << digits) + j), yy7);
+      _mm256_store_si256((__m256i*)(matrix + ((j + 7) << digits) + i), yy7);
       __builtin_prefetch(matrix + ((i + 7) << digits) + j + 8, 0, 3);
     }
 
